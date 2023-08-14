@@ -14,7 +14,7 @@ pipeline {
                     
                     checkout([$class: 'GitSCM',
                         userRemoteConfigs: [[url: 'https://github.com/sumamohan143/mytest.git']],
-                        branches: [[name: "pull/${prNumber}/head", refspec: "+refs/pull/${prNumber}/head:pr${prNumber}"]]
+                        //branches: [[name: "pull/${prNumber}/head", refspec: "+refs/pull/${prNumber}/head:pr${prNumber}"]]
                     ])
                     
                     // Additional checkout steps for the specific pull request branch
