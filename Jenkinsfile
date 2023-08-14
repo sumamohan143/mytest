@@ -13,7 +13,7 @@ pipeline {
                     echo "PR Number: ${prNumber}"
                     
                     checkout([$class: 'GitSCM',
-                        branches: [[name: "refs/pull/${prNumber}/head"]],
+                        branches: [[name: "refs/pull/pr${prNumber}/head"]],
                         userRemoteConfigs: [[url: 'https://github.com/sumamohan143/mytest.git']]
                     ])
                 }
