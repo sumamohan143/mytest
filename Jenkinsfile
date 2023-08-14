@@ -9,17 +9,17 @@ pipeline {
         stage('Checkout PR Branch') {
             steps {
                 script {
-            def prNumber = params.PR_NUMBER
-            echo "PR Number: ${prNumber}"
-            
-            checkout([$class: 'GitSCM',
-                userRemoteConfigs: [[url: 'https://github.com/sumamohan143/mytest.git']],
-                branches: [[name: "pull/${prNumber}/head", refspec: "+refs/pull/${prNumber}/head:pr${prNumber}"]]
-            ])
-            
-            // Additional checkout steps for the specific pull request branch
-            sh "git fetch origin pull/${prNumber}/head:pr${prNumber}"
-            sh "git checkout pr${prNumber}"
+                    def prNumber = params.PR_NUMBER
+                    echo "PR Number: ${prNumber}"
+                    
+                    checkout([$class: 'GitSCM',
+                        userRemoteConfigs: [[url: 'https://github.com/sumamohan143/mytest.git']],
+                        branches: [[name: "pull/${prNumber}/head", refspec: "+refs/pull/${prNumber}/head:pr${prNumber}"]]
+                    ])
+                    
+                    // Additional checkout steps for the specific pull request branch
+                    sh "git fetch origin pull/${prNumber}/head:pr${prNumber}"
+                    sh "git checkout pr${prNumber}"
         }
             }
         }
