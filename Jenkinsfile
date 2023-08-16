@@ -11,7 +11,7 @@ pipeline {
                 script {
                     def prNumber = params.PR_NUMBER
                     echo "PR Number: ${prNumber}"
-                    sh "git fetch origin pull/${prNumber}/merge:pr${prNumber}"
+                    sh "git fetch origin pull/${prNumber}/head:pr${prNumber}"
                     checkout([$class: 'GitSCM',
                         userRemoteConfigs: [[url: 'https://github.com/sumamohan143/mytest.git']],
                         branches: [[name: "pr${prNumber}"]]
